@@ -41,7 +41,7 @@ if status_code == 200:
     
     # Variables temporelles de VOTRE machine pour les NOUVEAUX liens uniquement
     now = datetime.now()
-    date_now_str = now.strftime("%d/%m/%Y à %H:%M")
+    date_now_str = now.strftime("%d/%m/%Y @ %H:%M")
     date_du_jour_str = now.strftime("%d/%m/%Y")
     heure_actuelle_str = now.strftime("%H:%M")
     
