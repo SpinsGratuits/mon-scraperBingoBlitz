@@ -6,7 +6,7 @@
         "heure": "20:03",
         "recompense": "Credits gratuits",
         "lienurl": "https://link.bingoblitz.com/Ap5Pz1k0dv0",
-        "badge": "NEW"
+        "badge": ""
     },
     {
         "date_scraping": "26/09/2026 @ 16:03",
@@ -123,24 +123,6 @@
         "heure": "13:50",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=20060807ef84bc47088664bf5d95288fa94c3f73c0a602bc0659149fc7e9bff1&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48719&gameref=FBS_210926",
-        "badge": ""
-    },
-    {
-        "date_scraping": "26/09/2026 @ 13:50",
-        "date_scraping1": "21/09/2026 @ 13:50",
-        "date": "21/09/2026",
-        "heure": "13:50",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://link.bingoblitz.com/eZxv72rxrp0",
-        "badge": ""
-    },
-    {
-        "date_scraping": "26/09/2026 @ 13:50",
-        "date_scraping1": "21/09/2026 @ 13:50",
-        "date": "21/09/2026",
-        "heure": "13:50",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=e8bf8cd239e7e823a8051ee4f0dabd1c23bd67b5eaa7d30bd64f3dfd0aaf9c8b&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48718&gameref=FBS_200926",
         "badge": ""
     }
 ]
