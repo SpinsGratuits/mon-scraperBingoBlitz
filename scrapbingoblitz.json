@@ -1,5 +1,23 @@
 [
     {
+        "date_scraping": "28/09/2026 @ 00:05",
+        "date_scraping1": "28/09/2026 @ 00:05",
+        "date": "28/09/2026",
+        "heure": "00:05",
+        "recompense": "Credits gratuits",
+        "lienurl": "https://link.bingoblitz.com/xE86PkK21OE",
+        "badge": "NEW"
+    },
+    {
+        "date_scraping": "28/09/2026 @ 00:05",
+        "date_scraping1": "28/09/2026 @ 00:05",
+        "date": "28/09/2026",
+        "heure": "00:05",
+        "recompense": "Credits gratuits",
+        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=3ecfa0c1726c9275dcd58cbcac2a849cbad006f6d99b97c3bcfa9d431af7bf93&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48725&gameref=FBS_270926",
+        "badge": "NEW"
+    },
+    {
         "date_scraping": "26/09/2026 @ 20:03",
         "date_scraping1": "27/09/2026 @ 20:03",
         "date": "27/09/2026",
@@ -105,24 +123,6 @@
         "heure": "13:50",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=773e9507acec3d760ccc968ca6cc91bf5339160e5094b3d625db5366eeef8647&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48630&gameref=IG_210926&fbclid=PAT01DUAUfYAVwZG9mAmV4dG4DYWVtAjEwAHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABpzhRwSIHhmObyxCJAkEz1IX4eOAc77gGu8d5px4tTE-4T18QHeg9L3IUaz0G_aem_my0gzwXwGhIEcX6zOTZUow",
-        "badge": ""
-    },
-    {
-        "date_scraping": "26/09/2026 @ 13:50",
-        "date_scraping1": "22/09/2026 @ 13:50",
-        "date": "22/09/2026",
-        "heure": "13:50",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://link.bingoblitz.com/rGE5VVx24Mv",
-        "badge": ""
-    },
-    {
-        "date_scraping": "26/09/2026 @ 13:50",
-        "date_scraping1": "22/09/2026 @ 13:50",
-        "date": "22/09/2026",
-        "heure": "13:50",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=20060807ef84bc47088664bf5d95288fa94c3f73c0a602bc0659149fc7e9bff1&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48719&gameref=FBS_210926",
         "badge": ""
     }
 ]
