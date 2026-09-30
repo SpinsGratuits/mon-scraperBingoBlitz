@@ -6,7 +6,7 @@
         "heure": "20:04",
         "recompense": "Credits gratuits",
         "lienurl": "https://link.bingoblitz.com/LBnoex05aOb",
-        "badge": "NEW"
+        "badge": ""
     },
     {
         "date_scraping": "29/09/2026 @ 20:04",
@@ -15,7 +15,7 @@
         "heure": "20:04",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=20a2763f52dd3d94ab343cd3d693254b11f30fae80da2109da34f0c19a460622&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48749&gameref=FBS_290926",
-        "badge": "NEW"
+        "badge": ""
     },
     {
         "date_scraping": "28/09/2026 @ 20:03",
@@ -123,24 +123,6 @@
         "heure": "13:50",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=9284e82458b57e04bd1aec4ae123c316b95fd48f935422003c38f31237020d22&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48631&gameref=IG_240926&fbclid=PAb21jcAUiAk1leHRuA2FlbQIxMQBwZG9mAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp4CPXyZqTjj7g7f3gJW7lof_CgJahybgqj1Hhdmy2Cw4fMhfmrVRcsRAqWGy_aem_Ri0RwZuoBU9DxyEjv5WxRQ",
-        "badge": ""
-    },
-    {
-        "date_scraping": "26/09/2026 @ 13:50",
-        "date_scraping1": "24/09/2026 @ 13:50",
-        "date": "24/09/2026",
-        "heure": "13:50",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://link.bingoblitz.com/wv25kPjp5PK",
-        "badge": ""
-    },
-    {
-        "date_scraping": "26/09/2026 @ 13:50",
-        "date_scraping1": "24/09/2026 @ 13:50",
-        "date": "24/09/2026",
-        "heure": "13:50",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=3459cc6ba234aa543e6c4728c1e9c786056ff3ecd56fd85cc9222ed29b8bf857&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48721&gameref=FBS_230926",
         "badge": ""
     }
 ]
