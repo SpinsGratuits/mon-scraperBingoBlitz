@@ -2,11 +2,20 @@
     {
         "date_scraping": "29/09/2026 @ 20:04",
         "date_scraping1": "30/09/2026 @ 20:04",
-        "date": "30/09/2026",
+        "date": "01/10/2026",
         "heure": "20:04",
         "recompense": "Credits gratuits",
         "lienurl": "https://link.bingoblitz.com/LBnoex05aOb",
         "badge": ""
+    },
+    {
+        "date_scraping": "30/09/2026 @ 20:04",
+        "date_scraping1": "01/10/2026 @ 20:04",
+        "date": "01/10/2026",
+        "heure": "20:04",
+        "recompense": "Credits gratuits",
+        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=fdb55b4bcf03851c2d1c3b20264e7e75806c666fda6e4fed32bebd5dfd1c4cf0&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48750&gameref=FBS_300926",
+        "badge": "NEW"
     },
     {
         "date_scraping": "29/09/2026 @ 20:04",
