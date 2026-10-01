@@ -15,7 +15,7 @@
         "heure": "20:04",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=fdb55b4bcf03851c2d1c3b20264e7e75806c666fda6e4fed32bebd5dfd1c4cf0&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48750&gameref=FBS_300926",
-        "badge": "NEW"
+        "badge": ""
     },
     {
         "date_scraping": "29/09/2026 @ 20:04",
@@ -105,33 +105,6 @@
         "heure": "13:50",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=5f6532904f4a988b790048195465469264808eaa0b37e44df0fc175f07c5988a&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48723&gameref=FBS_250926",
-        "badge": ""
-    },
-    {
-        "date_scraping": "26/09/2026 @ 13:50",
-        "date_scraping1": "25/09/2026 @ 13:50",
-        "date": "25/09/2026",
-        "heure": "13:50",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://link.bingoblitz.com/2pDDjXJ9ZQl",
-        "badge": ""
-    },
-    {
-        "date_scraping": "26/09/2026 @ 13:50",
-        "date_scraping1": "25/09/2026 @ 13:50",
-        "date": "25/09/2026",
-        "heure": "13:50",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=647f7ae14a608859f5252a930209ce7860f52e7a42e49c0cf9dcce0e9038459e&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48722&gameref=FBS_240926",
-        "badge": ""
-    },
-    {
-        "date_scraping": "26/09/2026 @ 13:50",
-        "date_scraping1": "25/09/2026 @ 13:50",
-        "date": "25/09/2026",
-        "heure": "13:50",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=9284e82458b57e04bd1aec4ae123c316b95fd48f935422003c38f31237020d22&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48631&gameref=IG_240926&fbclid=PAb21jcAUiAk1leHRuA2FlbQIxMQBwZG9mAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp4CPXyZqTjj7g7f3gJW7lof_CgJahybgqj1Hhdmy2Cw4fMhfmrVRcsRAqWGy_aem_Ri0RwZuoBU9DxyEjv5WxRQ",
         "badge": ""
     }
 ]
