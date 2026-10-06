@@ -4,12 +4,13 @@ import re
 from datetime import datetime, timedelta
 import cloudscraper
 from bs4 import BeautifulSoup
+import firebase_admin
+from firebase_admin import credentials, firestore
 
 # --- 1. CONFIGURATION ---
 url = "https://mosttechs.com/how-to-get-credits-in-bingo-blitz/"
 filename = "scrapbingoblitz.json"
 
-# Dictionnaire complet incluant toutes les variantes et abréviations de mois
 mois_en_to_num = {
     "january": "01", "jan": "01", "januray": "01",
     "february": "02", "feb": "02", "february ": "02",
@@ -30,6 +31,18 @@ date_now_str = now.strftime("%d/%m/%Y @ %H:%M")
 heure_actuelle_str = now.strftime("%H:%M")
 limite_conservation = now - timedelta(days=6)
 
+# --- 1B. INITIALISATION FIREBASE ---
+firebase_key_raw = os.environ.get('FIREBASE_KEY')
+if not firebase_key_raw:
+    raise ValueError("Le secret FIREBASE_KEY est introuvable dans l'environnement.")
+
+if not firebase_admin._apps:
+    cred_json = json.loads(firebase_key_raw)
+    cred = credentials.Certificate(cred_json)
+    firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+
 # --- 2. CHARGEMENT & NETTOYAGE DE L'HISTORIQUE ---
 anciens_liens = {}
 if os.path.exists(filename):
@@ -48,7 +61,6 @@ if os.path.exists(filename):
     except Exception as e:
         print(f"[Attention] Impossible de lire l'historique JSON : {e}")
 
-# Client de contournement anti-bot Cloudflare
 scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False})
 
 try:
@@ -63,23 +75,22 @@ except Exception as e:
 if status_code == 200:
     soup = BeautifulSoup(html_text, "html.parser")
     json_data = []
-    liens_visites_session = set()  # Optimisation de recherche anti-doublon
+    liens_visites_session = set()
+    nouveaux_liens_detectes = 0  
     
     entry_content = soup.find(class_="entry-content")
     if not entry_content:
         entry_content = soup
         
-    # --- 3. PARCOURS DE LA STRUCTURE TEXTUELLE ---
-    current_date_str = now.strftime("%d/%m/%Y")  # Valeur par défaut
+    current_date_str = now.strftime("%d/%m/%Y")
     
     for element in entry_content.find_all(["p", "ul", "ol", "strong"]):
         text = element.get_text().strip().lower()
         
-        # Détection d'une ligne de date isolée (\s+ prend en charge les irrégularités d'espaces)
         match_date = re.search(r'(\d{1,2})\s+([a-z]{3,})\s+(\d{4})', text)
         if match_date:
             jour = match_date.group(1).zfill(2)
-            nom_mois = match_date.group(2)
+            nom_mois = match_date.group(2).strip()
             annee = match_date.group(3)
                 
             num_mois = mois_en_to_num.get(nom_mois, "01")
@@ -98,27 +109,18 @@ if status_code == 200:
             keywords = ["bingoblitz", "playtika", "t.co", "bit.ly"]
             if any(key in href.lower() for key in keywords):
                 
-                try:
-                    date_objet = datetime.strptime(current_date_str, "%d/%m/%Y")
-                    if date_objet < limite_conservation:
-                        continue  
-                except:
-                    pass
-                
                 if href in liens_visites_session:
                     continue
                 liens_visites_session.add(href)
                 
                 type_recompense = "Credits gratuits"
                 
-                # --- STRATÉGIE DE RECONSTITUTION ET DE CONSERVATION DU BADGE NEW (6 HEURES) ---
                 if href in anciens_liens:
                     date_premier_scraping_str = anciens_liens[href].get("date_scraping", date_now_str)
                     badge_actuel = ""
                     
                     try:
                         date_premier_scraping = datetime.strptime(date_premier_scraping_str, "%d/%m/%Y @ %H:%M")
-                        # Maintien du badge si le lien a été enregistré il y a moins de 6 heures
                         if now - date_premier_scraping < timedelta(hours=6):
                             badge_actuel = "NEW"
                     except:
@@ -134,7 +136,7 @@ if status_code == 200:
                         "badge": badge_actuel
                     })
                 else:
-                    # Nouveau lien trouvé lors du cycle de scraping actuel
+                    nouveaux_liens_detectes += 1
                     date_scraping1_combinee = f"{current_date_str} @ {heure_actuelle_str}"
                     json_data.append({
                         "date_scraping": date_now_str, 
@@ -149,7 +151,6 @@ if status_code == 200:
     if not json_data and anciens_liens:
         json_data = list(anciens_liens.values())
 
-    # --- 4. TRI CHRONOLOGIQUE ---
     def extraire_cle_parution(item):
         try:
             return datetime.strptime(item.get("date", ""), "%d/%m/%Y").timestamp()
@@ -158,11 +159,38 @@ if status_code == 200:
 
     json_data.sort(key=extraire_cle_parution, reverse=True)
 
-    # --- 5. ENREGISTREMENT ---
     with open(filename, mode="w", encoding="utf-8") as json_file:
         json.dump(json_data, json_file, indent=4, ensure_ascii=False)
         
     print(f"[Terminé] Fichier Bingo Blitz {filename} mis à jour ({len(json_data)} liens valides).")
+    print(f"[Diagnostic] Nombre de nouveaux liens détectés : {nouveaux_liens_detectes}")
+
+    # --- 7. EXPORTATION NOTIFICATION & ENVOI PUSH DIRECT ---
+    if nouveaux_liens_detectes > 0:
+        try:
+            from firebase_admin import messaging
+            
+            db.collection("notifications").add({
+                "title": "🔮 Bingo Reward ! 🎁",
+                "body": "New free credits have just been added !",
+                "nom_du_jeu": "bingo_blitz",
+                "created_at": firestore.SERVER_TIMESTAMP
+            })
+            print("[Firebase] Enregistrement d'historique créé pour Bingo Blitz.")
+
+            message = messaging.Message(
+                notification=messaging.Notification(
+                    title="🔮 Bingo Reward ! 🎁",
+                    body="New free credits have just been added !"
+                ),
+                topic="bingo_blitz"
+            )
+            
+            response = messaging.send(message)
+            print(f"[Firebase Push] Notification Bingo Blitz envoyée ! (ID: {response})")
+            
+        except Exception as e:
+            print(f"[Firebase] [Erreur] Impossible d'envoyer l'alerte push direct Bingo Blitz : {e}")
             
 else:
     print(f"[Erreur] Échec de la communication réseau avec Mosttechs (Code {status_code}).")
