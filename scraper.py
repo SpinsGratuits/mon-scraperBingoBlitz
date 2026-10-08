@@ -29,7 +29,7 @@ mois_en_to_num = {
 now = datetime.now()
 date_now_str = now.strftime("%d/%m/%Y @ %H:%M")
 heure_actuelle_str = now.strftime("%H:%M")
-limite_conservation = now - timedelta(days=6)
+limite_conservation = now - timedelta(days=5)
 
 # --- 1B. INITIALISATION FIREBASE ---
 firebase_key_raw = os.environ.get('FIREBASE_KEY')
@@ -96,7 +96,15 @@ if status_code == 200:
             num_mois = mois_en_to_num.get(nom_mois, "01")
             current_date_str = f"{jour}/{num_mois}/{annee}"
             continue  
-            
+       # 🟢 AJOUT : On vérifie si la date de la section actuelle est trop vieille (inférieure à limite_conservation)
+        try:
+            date_section = datetime.strptime(current_date_str, "%d/%m/%Y")
+            # Si la date lue sur le site est plus vieille que notre limite, on ignore tous ses liens
+            if date_section < limite_conservation:
+                continue
+        except:
+            pass    
+	
         links = element.find_all("a", href=True)
         for link in links:
             href = link["href"].strip()
