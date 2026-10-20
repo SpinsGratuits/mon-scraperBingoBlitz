@@ -6,7 +6,7 @@
         "heure": "16:11",
         "recompense": "Credits gratuits",
         "lienurl": "https://link.bingoblitz.com/bG7lvbBYZb4",
-        "badge": "NEW"
+        "badge": ""
     },
     {
         "date_scraping": "19/10/2026 @ 16:11",
@@ -15,7 +15,7 @@
         "heure": "16:11",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=f5dceebc95aa5fda0592a7570d05a0b21d525db36c08a98bb4a36149576581d6&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48743&gameref=IG_191026&fbclid=PAb21jcAVDAM1leHRuA2FlbQIxMQBwZG9mAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp_iJtB82YV8OlitzZ645_22mzgTbSlBCHRpnvAMFPxdD4eJT9j0uVxx13ZNT_aem_dbKJnkjCcswZBlIFCV0wAQ",
-        "badge": "NEW"
+        "badge": ""
     },
     {
         "date_scraping": "19/10/2026 @ 16:11",
@@ -24,7 +24,7 @@
         "heure": "16:11",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=76a796cf2f49eccd328f1843f72ebecf599998c1a6f28ac16994743e6f619226&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48840&gameref=FBS_191026",
-        "badge": "NEW"
+        "badge": ""
     },
     {
         "date_scraping": "18/10/2026 @ 16:01",
@@ -96,24 +96,6 @@
         "heure": "18:07",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=939713284e0cf0149ea7a12b802500cf46328f5cadc384f601271f714103ee38&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48836&gameref=FBS_151026",
-        "badge": ""
-    },
-    {
-        "date_scraping": "14/10/2026 @ 16:13",
-        "date_scraping1": "15/10/2026 @ 16:13",
-        "date": "15/10/2026",
-        "heure": "16:13",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://link.bingoblitz.com/Z9954xkYXY2",
-        "badge": ""
-    },
-    {
-        "date_scraping": "14/10/2026 @ 16:13",
-        "date_scraping1": "15/10/2026 @ 16:13",
-        "date": "15/10/2026",
-        "heure": "16:13",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=c9dc92271b4eff1cef69e0778347bb947842afee15dbc5e2e4389f703548e31e&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48835&gameref=FBS_141026",
         "badge": ""
     }
 ]
