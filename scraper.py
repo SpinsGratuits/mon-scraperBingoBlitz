@@ -9,7 +9,6 @@ from firebase_admin import credentials, firestore
 
 # --- 1. CONFIGURATION ---
 url = "https://mosttechs.com/how-to-get-credits-in-bingo-blitz/"
-url = "https://www.pcgamesn.com/bingo-blitz/free-credits"
 filename = "scrapbingoblitz.json"
 
 mois_en_to_num = {
