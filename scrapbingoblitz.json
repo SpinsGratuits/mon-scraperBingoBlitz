@@ -6,7 +6,7 @@
         "heure": "17:27",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=f10cb407399af67c69eb10661494e3844d13e0c79fd7a82600c9ca8cc6c22f77&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48847&gameref=FBS_261026",
-        "badge": "NEW"
+        "badge": ""
     },
     {
         "date_scraping": "26/10/2026 @ 17:27",
@@ -15,7 +15,7 @@
         "heure": "17:27",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=3ca260741abf60a4c8ad9bcc9651a6ac02e73a4b5926a5fd75eca6cdbe3765b3&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48745&gameref=IG_261026&fbclid=PAT01DUAVML51leHRuA2FlbQIxMABwZG9mAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp2e5qIxiQKPapE9QKVkb5KaV4AzNyBxQmFMUFb7jwNrbKUwBUczmiPe9RfJ9_aem_9OMMrbOp15odWrUWqt5BTw",
-        "badge": "NEW"
+        "badge": ""
     },
     {
         "date_scraping": "25/10/2026 @ 17:47",
@@ -96,24 +96,6 @@
         "heure": "17:47",
         "recompense": "Credits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=df7bf3ff736b24cf34a02b86cd9998fe753ea7a95219005ead409a561bcbcb20&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48744&gameref=IG_221026&fbclid=PAb21jcAVG27BleHRuA2FlbQIxMQBwZG9mAnNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp2pbvhSIjHHHGPxCT8BdtlmzFNNuDJXFxAcBldjo_TyhYNCRQeTHCeGE3Bl2_aem_ZJQqLqLmSmVpQ0XBWG6Znw",
-        "badge": ""
-    },
-    {
-        "date_scraping": "25/10/2026 @ 17:47",
-        "date_scraping1": "22/10/2026 @ 17:47",
-        "date": "22/10/2026",
-        "heure": "17:47",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=093fe4c76471c4f780e2b9dd8ba9a59111cbe9ac6d72ea070903335310451adc&desktop=fb_instant_game&scene=popup&asset=inbox.PopupGiftCenter&originId=48842&gameref=FBS_211026",
-        "badge": ""
-    },
-    {
-        "date_scraping": "25/10/2026 @ 17:47",
-        "date_scraping1": "22/10/2026 @ 17:47",
-        "date": "22/10/2026",
-        "heure": "17:47",
-        "recompense": "Credits gratuits",
-        "lienurl": "https://link.bingoblitz.com/L9lBeY72D04",
         "badge": ""
     }
 ]
