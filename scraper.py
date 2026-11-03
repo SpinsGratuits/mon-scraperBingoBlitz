@@ -8,30 +8,15 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 
 # --- 1. CONFIGURATION ---
-url = "https://gamewave.fr/bingo-blitz/bingo-blitz-liens-credits-gratuits-free-credits/"
+url = "https://gamewave.fr"
 filename = "scrapbingoblitz.json"
-
-mois_en_to_num = {
-    "january": "01", "jan": "01", "januray": "01",
-    "february": "02", "feb": "02", "february ": "02",
-    "march": "03", "mar": "03",
-    "april": "04", "apr": "04",
-    "may": "05",
-    "june": "06", "jun": "06",
-    "july": "07", "jul": "07",
-    "august": "08", "aug": "08", "augest": "08",
-    "september": "09", "sep": "09",
-    "october": "10", "oct": "10",
-    "november": "11", "nov": "11",
-    "december": "12", "dec": "12"
-}
 
 now = datetime.now()
 date_now_str = now.strftime("%d/%m/%Y @ %H:%M")
 heure_actuelle_str = now.strftime("%H:%M")
 limite_conservation = now - timedelta(days=5)
 
-# --- 1B. INITIALISATION FIREBASE ---
+# --- 2. INITIALISATION FIREBASE ---
 firebase_key_raw = os.environ.get('FIREBASE_KEY')
 if not firebase_key_raw:
     raise ValueError("Le secret FIREBASE_KEY est introuvable dans l'environnement.")
@@ -43,7 +28,7 @@ if not firebase_admin._apps:
 
 db = firestore.client()
 
-# --- 2. CHARGEMENT & NETTOYAGE DE L'HISTORIQUE ---
+# --- 3. CHARGEMENT & NETTOYAGE DE L'HISTORIQUE ---
 anciens_liens = {}
 if os.path.exists(filename):
     try:
@@ -61,8 +46,8 @@ if os.path.exists(filename):
     except Exception as e:
         print(f"[Attention] Impossible de lire l'historique JSON : {e}")
 
+# --- 4. REQUÊTE HTTP AVEC CLOUDSCRAPER ---
 scraper = cloudscraper.create_scraper(browser={'browser': 'chrome', 'platform': 'windows', 'mobile': False})
-
 try:
     response = scraper.get(url, timeout=15)
     status_code = response.status_code
@@ -72,93 +57,102 @@ except Exception as e:
     html_text = ""
     print(f"[Erreur] Connexion impossible : {e}")
 
+# --- 5. PARSING ET EXTRACTION DES DONNÉES ---
 if status_code == 200:
     soup = BeautifulSoup(html_text, "html.parser")
     json_data = []
     liens_visites_session = set()
-    nouveaux_liens_detectes = 0  
-    
-    entry_content = soup.find(class_="entry-content")
-    if not entry_content:
-        entry_content = soup
+    nouveaux_liens_detectes = 0
+
+    # On cible directement le tableau contenant les crédits gratuits
+    table = soup.find("table")
+    if table:
+        # On parcourt toutes les lignes en ignorant l'en-tête (première ligne)
+        rows = table.find_all("tr")[1:]
         
-    current_date_str = now.strftime("%d/%m/%Y")
-    
-    for element in entry_content.find_all(["p", "ul", "ol", "strong"]):
-        text = element.get_text().strip().lower()
-        
-        match_date = re.search(r'(\d{1,2})\s+([a-z]{3,})\s+(\d{4})', text)
-        if match_date:
-            jour = match_date.group(1).zfill(2)
-            nom_mois = match_date.group(2).strip()
-            annee = match_date.group(3)
-                
-            num_mois = mois_en_to_num.get(nom_mois, "01")
-            current_date_str = f"{jour}/{num_mois}/{annee}"
-            continue  
-       # 🟢 AJOUT : On vérifie si la date de la section actuelle est trop vieille (inférieure à limite_conservation)
-        try:
-            date_section = datetime.strptime(current_date_str, "%d/%m/%Y")
-            # Si la date lue sur le site est plus vieille que notre limite, on ignore tous ses liens
-            if date_section < limite_conservation:
+        for row in rows:
+            cols = row.find_all("td")
+            if len(cols) < 3:
                 continue
-        except:
-            pass    
-	
-        links = element.find_all("a", href=True)
-        for link in links:
-            href = link["href"].strip()
             
-            if href.startswith("/") or "t.me" in href.lower() or "telegram.me" in href.lower():
-                continue
-            if any(p in href.lower() for p in ["twitter.com", "facebook.com", "whatsapp", "pinterest", "reddit.com"]):
-                continue
-                
-            keywords = ["bingoblitz", "playtika", "t.co", "bit.ly"]
-            if any(key in href.lower() for key in keywords):
-                
-                if href in liens_visites_session:
+            # Extraction et nettoyage de la date et de l'heure (ex: "02/11/2026 à 17:00")
+            date_brute = cols[0].get_text().strip()
+            match_date = re.search(r'(\d{2}/\d{2}/\d{4})', date_brute)
+            if match_date:
+                current_date_str = match_date.group(1)
+            else:
+                current_date_str = now.strftime("%d/%m/%Y")
+            
+            match_heure = re.search(r'(\d{2}:\d{2})', date_brute)
+            heure_liens = match_heure.group(1) if match_heure else "00:00"
+
+            # Vérification de la limite de conservation (Anciens liens ignorés)
+            try:
+                date_section = datetime.strptime(current_date_str, "%d/%m/%Y")
+                if date_section < limite_conservation:
                     continue
-                liens_visites_session.add(href)
-                
-                type_recompense = "Credits gratuits"
-                
-                if href in anciens_liens:
-                    date_premier_scraping_str = anciens_liens[href].get("date_scraping", date_now_str)
-                    badge_actuel = ""
-                    
-                    try:
-                        date_premier_scraping = datetime.strptime(date_premier_scraping_str, "%d/%m/%Y @ %H:%M")
-                        if now - date_premier_scraping < timedelta(hours=6):
-                            badge_actuel = "NEW"
-                    except:
-                        badge_actuel = anciens_liens[href].get("badge", "")
+            except:
+                pass
 
-                    json_data.append({
-                        "date_scraping": date_premier_scraping_str, 
-                        "date_scraping1": anciens_liens[href].get("date_scraping1", f"{current_date_str} @ {heure_actuelle_str}"),
-                        "date": current_date_str,  
-                        "heure": anciens_liens[href].get("heure", "00:00"),
-                        "recompense": anciens_liens[href].get("recompense", type_recompense), 
-                        "lienurl": href,
-                        "badge": badge_actuel
-                    })
-                else:
-                    nouveaux_liens_detectes += 1
-                    date_scraping1_combinee = f"{current_date_str} @ {heure_actuelle_str}"
-                    json_data.append({
-                        "date_scraping": date_now_str, 
-                        "date_scraping1": date_scraping1_combinee,
-                        "date": current_date_str,  
-                        "heure": heure_actuelle_str,
-                        "recompense": type_recompense, 
-                        "lienurl": href,
-                        "badge": "NEW" 
-                    })
+            # Extraction du type de récompense (ex: "Crédits gratuits")
+            type_recompense = cols[1].get_text().strip()
 
+            # Extraction du lien hypertexte dans le bouton
+            link_tag = cols[2].find("a", href=True)
+            if not link_tag:
+                continue
+                
+            href = link_tag["href"].strip()
+
+            # Filtrage de sécurité contre les réseaux sociaux ou mauvais liens
+            if href.startswith("/") or any(p in href.lower() for p in ["twitter.com", "facebook.com", "whatsapp", "pinterest", "reddit.com", "t.me", "telegram.me"]):
+                continue
+
+            # Éviter les doublons de session
+            if href in liens_visites_session:
+                continue
+            liens_visites_session.add(href)
+
+            # Structuration de la donnée (Ancien vs Nouveau lien)
+            if href in anciens_liens:
+                date_premier_scraping_str = anciens_liens[href].get("date_scraping", date_now_str)
+                badge_actuel = ""
+                try:
+                    date_premier_scraping = datetime.strptime(date_premier_scraping_str, "%d/%m/%Y @ %H:%M")
+                    if now - date_premier_scraping < timedelta(hours=6):
+                        badge_actuel = "NEW"
+                except:
+                    badge_actuel = anciens_liens[href].get("badge", "")
+
+                json_data.append({
+                    "date_scraping": date_premier_scraping_str,
+                    "date_scraping1": anciens_liens[href].get("date_scraping1", f"{current_date_str} @ {heure_actuelle_str}"),
+                    "date": current_date_str,
+                    "heure": anciens_liens[href].get("heure", heure_liens),
+                    "recompense": anciens_liens[href].get("recompense", type_recompense),
+                    "lienurl": href,
+                    "badge": badge_actuel
+                })
+            else:
+                nouveaux_liens_detectes += 1
+                date_scraping1_combinee = f"{current_date_str} @ {heure_actuelle_str}"
+                json_data.append({
+                    "date_scraping": date_now_str,
+                    "date_scraping1": date_scraping1_combinee,
+                    "date": current_date_str,
+                    "heure": heure_liens,
+                    "recompense": type_recompense,
+                    "lienurl": href,
+                    "badge": "NEW"
+                })
+    else:
+        print("[Attention] Aucun tableau de liens trouvé sur la page.")
+
+    # Si aucun lien n'a été trouvé mais que l'historique existe, on préserve l'historique
     if not json_data and anciens_liens:
         json_data = list(anciens_liens.values())
 
+    # Tri par date décroissante
     def extraire_cle_parution(item):
         try:
             return datetime.strptime(item.get("date", ""), "%d/%m/%Y").timestamp()
@@ -167,13 +161,14 @@ if status_code == 200:
 
     json_data.sort(key=extraire_cle_parution, reverse=True)
 
+    # --- 6. SAUVEGARDE JSON ---
     with open(filename, mode="w", encoding="utf-8") as json_file:
         json.dump(json_data, json_file, indent=4, ensure_ascii=False)
-        
+
     print(f"[Terminé] Fichier Bingo Blitz {filename} mis à jour ({len(json_data)} liens valides).")
     print(f"[Diagnostic] Nombre de nouveaux liens détectés : {nouveaux_liens_detectes}")
 
-    # --- 7. EXPORTATION NOTIFICATION & ENVOI PUSH DIRECT ---
+    # --- 7. EXPORTATION NOTIFICATION & ENVOI PUSH VIA FIREBASE ---
     if nouveaux_liens_detectes > 0:
         try:
             from firebase_admin import messaging
@@ -193,12 +188,9 @@ if status_code == 200:
                 ),
                 topic="bingo_blitz"
             )
-            
             response = messaging.send(message)
             print(f"[Firebase Push] Notification Bingo Blitz envoyée ! (ID: {response})")
-            
         except Exception as e:
             print(f"[Firebase] [Erreur] Impossible d'envoyer l'alerte push direct Bingo Blitz : {e}")
-            
 else:
-    print(f"[Erreur] Échec de la communication réseau avec Mosttechs (Code {status_code}).")
+    print(f"[Erreur] Échec de la communication réseau avec Gamewave (Code {status_code}).")
