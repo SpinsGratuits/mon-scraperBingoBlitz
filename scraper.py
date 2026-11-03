@@ -8,7 +8,7 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 
 # --- 1. CONFIGURATION ---
-url = "https://gamewave.fr"
+url = "https://gamewave.fr/bingo-blitz/bingo-blitz-liens-credits-gratuits-free-credits/"
 filename = "scrapbingoblitz.json"
 
 now = datetime.now()
