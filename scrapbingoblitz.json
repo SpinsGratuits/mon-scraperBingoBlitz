@@ -2,16 +2,16 @@
     {
         "date_scraping": "16/11/2026 @ 17:26",
         "date_scraping1": "16/11/2026 @ 17:26",
-        "date": "16/11/2026",
+        "date": "17/11/2026",
         "heure": "18:00",
         "recompense": "Crédits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=55defc960e65888dd9ab918a226c28d7bf44b2a5cd1b41993692e6de6b655f4a",
-        "badge": "NEW"
+        "badge": ""
     },
     {
         "date_scraping": "16/11/2026 @ 16:03",
         "date_scraping1": "16/11/2026 @ 16:03",
-        "date": "16/11/2026",
+        "date": "17/11/2026",
         "heure": "16:00",
         "recompense": "Crédits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=95fb836b9f6503da212e148fe9441a4fa5504b7dba89cd5c57f9cef8d3c8144e",
@@ -20,7 +20,7 @@
     {
         "date_scraping": "16/11/2026 @ 16:03",
         "date_scraping1": "16/11/2026 @ 16:03",
-        "date": "16/11/2026",
+        "date": "17/11/2026",
         "heure": "16:00",
         "recompense": "Crédits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=e73a08a078a7488436fd414ef894178d7ac655b542c0faa74fb329e8e6953e19",
@@ -29,7 +29,7 @@
     {
         "date_scraping": "16/11/2026 @ 16:03",
         "date_scraping1": "16/11/2026 @ 16:03",
-        "date": "16/11/2026",
+        "date": "17/11/2026",
         "heure": "16:00",
         "recompense": "Crédits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=f1e050f3c2d131c3cb1483d418192144774fd0da837cc2a49f3c909166de1a68",
@@ -87,33 +87,6 @@
         "heure": "17:00",
         "recompense": "Crédits gratuits",
         "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=a4f9254542b2abf586b5cfe35fbb107e8dcef565801bfbf0eaf41aba7e8ef4ce",
-        "badge": ""
-    },
-    {
-        "date_scraping": "12/11/2026 @ 17:03",
-        "date_scraping1": "12/11/2026 @ 17:03",
-        "date": "12/11/2026",
-        "heure": "17:00",
-        "recompense": "Crédits gratuits",
-        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=3a9a3f41dcfdeb39d987e8146066c8362bb86fbb82336f0f9834033a10c9a275",
-        "badge": ""
-    },
-    {
-        "date_scraping": "12/11/2026 @ 15:03",
-        "date_scraping1": "12/11/2026 @ 15:03",
-        "date": "12/11/2026",
-        "heure": "15:00",
-        "recompense": "Crédits gratuits",
-        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=646aa17d499a7ebe418fcbb16adabbda5684ca4e428aa6bfa08ad6811d3fab44",
-        "badge": ""
-    },
-    {
-        "date_scraping": "12/11/2026 @ 15:03",
-        "date_scraping1": "12/11/2026 @ 15:03",
-        "date": "12/11/2026",
-        "heure": "15:00",
-        "recompense": "Crédits gratuits",
-        "lienurl": "https://bingo-app-dsa.playtika.com/bingo2-v2-bingoblitz/incentive/?incentive=edbfb25e35c853e2dda06458db244ee2f3cfa63d3c0a0f80f98e6a0e671329f2",
         "badge": ""
     }
 ]
